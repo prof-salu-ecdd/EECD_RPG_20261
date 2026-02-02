@@ -765,6 +765,7 @@ MonoBehaviour:
   inventario: {fileID: 1337405898}
   espada: {fileID: 11400000, guid: 9f2d6a8fb4c76884e9ed4fba87936880, type: 2}
   pocao: {fileID: 11400000, guid: 429c578530f4a9044ad0af2628215113, type: 2}
+  biscoito: {fileID: 11400000, guid: 16ba8d91053e03d4192431569859c188, type: 2}
 --- !u!4 &1337405900
 Transform:
   m_ObjectHideFlags: 0
