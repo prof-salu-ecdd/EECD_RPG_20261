@@ -728,8 +728,9 @@ GameObject:
   - component: {fileID: 1337405900}
   - component: {fileID: 1337405899}
   - component: {fileID: 1337405898}
+  - component: {fileID: 1337405901}
   m_Layer: 0
-  m_Name: Teste
+  m_Name: TesteGlobal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SistemaInventario
   inventario: []
+  moedas: 0
 --- !u!114 &1337405899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,6 +780,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1337405901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337405897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3afdd833e3ff3494ab9eec7f28da2802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InterfaceInventario
+  sistemaInventario: {fileID: 1337405898}
+  containerGrid: {fileID: 847840208}
+  prefabSlot: {fileID: 159576471053939692, guid: d047e5f734bdc8646bbea9cca78834f7, type: 3}
+  textoMoedas: {fileID: 1763060594}
 --- !u!1 &1461422255
 GameObject:
   m_ObjectHideFlags: 0

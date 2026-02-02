@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DadosItem
   nomeDoItem: Escudo de Madeira
   id: item_escudo_madeira
-  icone: {fileID: 0}
+  icone: {fileID: 21300000, guid: 6ffccb7eb5bda1747b2bef4cd75e6772, type: 3}
   descricao: "Escudo de Madeira feito com um peda\xE7o de porta."
   valorEmOuro: 2
   ehEmpilhavel: 0

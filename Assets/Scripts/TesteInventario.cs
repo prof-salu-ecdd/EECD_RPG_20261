@@ -6,6 +6,7 @@ public class TesteInventario : MonoBehaviour
 
     public DadosItem espada;
     public DadosItem pocao;
+    public DadosItem biscoito;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class TesteInventario : MonoBehaviour
         inventario.AdicionarItem(pocao, 5);
 
         inventario.AdicionarItem(espada, 1);
+        inventario.AdicionarItem(biscoito, 1);
 
         inventario.RemoverItem(pocao, 2);
     }

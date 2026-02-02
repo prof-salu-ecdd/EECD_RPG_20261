@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DadosItem
   nomeDoItem: Espada de Treinamento
   id: item_espada_treinamento
-  icone: {fileID: 0}
+  icone: {fileID: 21300000, guid: 62b0fc13496691b48a2c064bf2e4d8d3, type: 3}
   descricao: Espada de madeira para treinamento de recrutas.
   valorEmOuro: 10
   ehEmpilhavel: 0

@@ -1,10 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
+using System;
 
 public class SistemaInventario : MonoBehaviour
 {
     public List<SlotInventario> inventario = new List<SlotInventario>();
+
+    [Header("Economia")]
+    public int moedas = 0;
+
+    //Evento que indica alteração no inventário
+    public event Action onInventarioMudou;
 
     public void AdicionarItem(DadosItem itemParaAdicionar, int quantidade)
     {
@@ -18,6 +24,13 @@ public class SistemaInventario : MonoBehaviour
                 {
                     inventario[i].AdicionarQuantidade(quantidade);
                     Debug.Log($"Adicionado + {quantidade} ao item {itemParaAdicionar.nomeDoItem}");
+
+                    //Informa a Unity que ocorreu uma alteração no inventário
+                    if(onInventarioMudou != null)
+                    {
+                        onInventarioMudou.Invoke();
+                    }
+
                     return;
                 }
             }
@@ -29,6 +42,12 @@ public class SistemaInventario : MonoBehaviour
 
         //Adicionado o slot ao inventario
         inventario.Add(novoSlot);
+
+        //Informa a Unity que ocorreu uma alteração no inventário
+        if (onInventarioMudou != null)
+        {
+            onInventarioMudou.Invoke();
+        }
     }
 
     public void RemoverItem(DadosItem item, int quantidade)
@@ -41,14 +60,55 @@ public class SistemaInventario : MonoBehaviour
                 //1.1 Subtrai a quantidade desejada de itens
                 slot.SubtrairQuantidade(quantidade);
                 Debug.Log($"Subtraido - {quantidade} ao item {item.nomeDoItem}. Total: {slot.quantidade}");
+
+                //Informa a Unity que ocorreu uma alteração no inventário
+                if (onInventarioMudou != null)
+                {
+                    onInventarioMudou.Invoke();
+                }
+
+
                 if (slot.quantidade <= 0)
                 {
                     //Remove o item do inventario
                     inventario.Remove(slot);
                     Debug.Log($"Slot removido: {item.nomeDoItem}");
+
+                    //Informa a Unity que ocorreu uma alteração no inventário
+                    if (onInventarioMudou != null)
+                    {
+                        onInventarioMudou.Invoke();
+                    }
+
                     return;
                 }
             }
         }
     }
+
+    public void ModificadorMoedas(int valor)
+    {
+        moedas += valor;
+
+        if(moedas < 0)
+        {
+            moedas = 0;
+        }
+
+        //Informa a Unity que ocorreu uma alteração no inventário
+        if (onInventarioMudou != null)
+        {
+            onInventarioMudou.Invoke();
+        }
+    }
+
+    //Quando ocorreu alguma alteração pela Unity, o jogo atualiza o inventario
+    private void OnValidate()
+    {
+        if(Application.isPlaying && onInventarioMudou != null)
+        {
+            onInventarioMudou.Invoke();
+        }
+    }
 }
+
