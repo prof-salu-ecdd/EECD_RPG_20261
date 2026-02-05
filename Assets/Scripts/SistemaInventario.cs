@@ -102,6 +102,20 @@ public class SistemaInventario : MonoBehaviour
         }
     }
 
+    public bool TemItem(DadosItem item, int qtd)
+    {
+        //Verifica se tem o item e quantidade necessaria dentro do inventario
+        foreach(SlotInventario slot in inventario)
+        {
+            if(slot.dadosDoItem == item && slot.quantidade >= qtd)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     //Quando ocorreu alguma alteração pela Unity, o jogo atualiza o inventario
     private void OnValidate()
     {
