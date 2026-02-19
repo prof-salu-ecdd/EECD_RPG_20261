@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControladorInimigo : MonoBehaviour
 {
@@ -28,10 +29,23 @@ public class ControladorInimigo : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private GameObject jogador; //Armazena os dados do Jogador
 
+    private Rigidbody2D rb;
+    private Collider2D meuCollider;
+
+    private Vector2 destinoMovimento;
+    private float velocidadeAtual;
+    private bool estaSeMovendo = false;
+
+    [Header("Identidade")]
+    public string nomeId;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        meuCollider = GetComponent<Collider2D>();
+
         //Ao iniciar a partida, começa parado (idle)
         estadoAtual = EstadoInimigo.Patrulha;
 
@@ -44,6 +58,8 @@ public class ControladorInimigo : MonoBehaviour
 
     private void Update()
     {
+        estaSeMovendo = false;
+
         //0. Segurança. Se o jogador morrer ou não for encontrado, não faz nada.
         if(jogador == null)
         {
@@ -104,32 +120,35 @@ public class ControladorInimigo : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (estaSeMovendo == true) 
+        {
+            //Captura a nova posição do jogador
+            Vector2 novaPosicao = Vector2.MoveTowards(rb.position, destinoMovimento, velocidadeAtual * Time.fixedDeltaTime);
+            rb.MovePosition(novaPosicao);
+        }
+    }
+
     private void IniciarCombate()
     {
         Debug.Log("Inicio do combate!");
-        //Apenas para o jogo (por enquanto)
-        Time.timeScale = 0f;
+        
+        DadosGlobais.inimigoParaGerar = nomeId;
+
+        SceneManager.LoadScene("Arena");
     }
 
     private void Perseguir()
     {
-        //1. Calcular a direção (Do inimigo para o Jogador)
-        Vector3 direcao = (jogador.transform.position - transform.position).normalized;
+        //Desativa o modo fantasma
+        if(meuCollider != null)
+        {
+            meuCollider.isTrigger = false;
+        }
 
-        //2. Atualiza o animator
-        animator.SetBool("Andando", true);
-        animator.SetFloat("Horizontal", direcao.x);
-        animator.SetFloat("Vertical", direcao.y);
-
-        //3. Flip
-        Flip(direcao);
-
-        //Mover o inimigo
-
-        /*- Ajustar a movimentação do inimigo para o RIGIBODY.*/
-        transform.position = Vector2.MoveTowards(transform.position,
-                                                 jogador.transform.position,
-                                                 velocidade * Time.deltaTime * 1.3f);
+        //Mover Personagem
+        Mover(jogador.transform.position, velocidade * 1.5f);
     }
 
     private void Flip(Vector3 direcao)
@@ -146,28 +165,25 @@ public class ControladorInimigo : MonoBehaviour
 
     private void Patrulhar()
     {
-        //Defino o ponto(alvo) atual da patrulha
+        //Modo fantasma
+        if(meuCollider != null)
+        {
+            meuCollider.isTrigger = true;
+        }
+
         Transform alvo = pontosDePatrulha[indicePontoAtual];
 
-        //1. Verifica a distancia (Chegou ao alvo?)
-        if (Vector2.Distance(transform.position, alvo.position) < 0.1f) 
+        if(Vector2.Distance(transform.position, alvo.position) < 0.1f)
         {
-            //Chegou ao ponto (ESPERA)
             animator.SetBool("Andando", false);
-
-            //Conta o tempo de espera
             cronometroEspera += Time.deltaTime;
 
-            //Se o tempo passou do limite
             if(cronometroEspera >= tempoDeEspera)
             {
-                //Reseta o cronometro
                 cronometroEspera = 0;
                 indicePontoAtual++;
 
-                //Caso a posicao atual do alvo, seja maior que o total de posicoes, volta para o começo.
-
-                if(indicePontoAtual>= pontosDePatrulha.Length)
+                if(indicePontoAtual >= pontosDePatrulha.Length)
                 {
                     indicePontoAtual = 0;
                 }
@@ -175,25 +191,25 @@ public class ControladorInimigo : MonoBehaviour
         }
         else
         {
-            //Se não chegou ao destino, continua andando
-
-            //2. Calcular a direção
-            Vector2 direcao = (alvo.position - transform.position).normalized;
-
-            //3. Atualizar o animator
-            animator.SetBool("Andando", true);
-            animator.SetFloat("Horizontal", direcao.x);
-            animator.SetFloat("Vertical", direcao.y);
-
-            //4. Flip
-            Flip(direcao);
-
-            //5. Mover
-            /*- Ajustar a movimentação do inimigo para o RIGIBODY.*/
-            transform.position = Vector2.MoveTowards(transform.position,
-                                                            alvo.position,
-                                                            velocidade * Time.deltaTime);
+            //Mover Personagem
+            Mover(alvo.position, velocidade);
         }
+    }
+
+    private void Mover(Vector3 destino, float velocidadeMovimento)
+    {
+        Vector3 direcao = (destino - transform.position).normalized;
+
+        animator.SetBool("Andando", true);
+        animator.SetFloat("Horizontal", direcao.x);
+        animator.SetFloat("Vertical", direcao.y);
+
+        Flip(direcao);
+
+        //Atualiza a variavel do FixedUpdate
+        destinoMovimento = destino;
+        velocidadeAtual = velocidadeMovimento;
+        estaSeMovendo = true;
     }
 
     private void OnDrawGizmosSelected()
