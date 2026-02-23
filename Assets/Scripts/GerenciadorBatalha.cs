@@ -6,12 +6,11 @@ public class GerenciadorBatalha : MonoBehaviour
 
     [Header("Posições")]
     public Transform posicaoJogador;
-    public Transform posicaoInimigo;
+    //Agora precisamos de uma lista com todas as posições dos inimigos
+    public List<Transform> posicaoInimigos = new List<Transform>();
 
     [Header("Prefabs")]
     public GameObject prefabJogador;
-    public GameObject prefabInimigo1;
-    public GameObject prefabInimigo2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,10 +26,12 @@ public class GerenciadorBatalha : MonoBehaviour
 
         //Verifica qual é a lista de inimigos
         List<GameObject> grupoPrefabs = DadosGlobais.prefabsInimigos;
-        
-        foreach(GameObject inimigo in grupoPrefabs)
+
+        for (int i = 0; i < grupoPrefabs.Count; i++)
         {
-            Instantiate(inimigo, posicaoInimigo.position, Quaternion.identity);
+            Instantiate(grupoPrefabs[i], 
+                        posicaoInimigos[i].transform.position, 
+                        Quaternion.identity);
         }       
     }
 }

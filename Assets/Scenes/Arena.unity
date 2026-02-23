@@ -4794,10 +4794,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GerenciadorBatalha
   posicaoJogador: {fileID: 221248962}
-  posicaoInimigo: {fileID: 1203617275}
+  posicaoInimigos:
+  - {fileID: 1203617275}
+  - {fileID: 2005902159}
+  - {fileID: 1559753996}
   prefabJogador: {fileID: 3611428944001559555, guid: afac71e36b4bc6c4aba284389273a056, type: 3}
-  prefabInimigo1: {fileID: 7349524736379277475, guid: df55c5ef32c56bb4cb15418e74ca4ac0, type: 3}
-  prefabInimigo2: {fileID: 7349524736379277475, guid: df55c5ef32c56bb4cb15418e74ca4ac0, type: 3}
 --- !u!1 &1203617274
 GameObject:
   m_ObjectHideFlags: 0
@@ -4808,7 +4809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1203617275}
   m_Layer: 0
-  m_Name: PosicaoInimigo
+  m_Name: PosicaoInimigo1
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4823,7 +4824,7 @@ Transform:
   m_GameObject: {fileID: 1203617274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4875,6 +4876,68 @@ Transform:
   - {fileID: 511237546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1559753995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1559753996}
+  m_Layer: 0
+  m_Name: PosicaoInimigo3
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1559753996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559753995}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: -1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2005902158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2005902159}
+  m_Layer: 0
+  m_Name: PosicaoInimigo2
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2005902159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005902158}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4884,4 +4947,6 @@ SceneRoots:
   - {fileID: 1444107361}
   - {fileID: 221248962}
   - {fileID: 1203617275}
+  - {fileID: 2005902159}
+  - {fileID: 1559753996}
   - {fileID: 1173460756}
