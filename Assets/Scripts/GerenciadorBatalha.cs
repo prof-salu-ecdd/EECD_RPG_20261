@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GerenciadorBatalha : MonoBehaviour
@@ -24,24 +25,12 @@ public class GerenciadorBatalha : MonoBehaviour
             jogador.GetComponent<MovimentacaoExploracao>().enabled = false;
         }
 
-
-        //Verifica qual é o inimigo
-        string inimigo = DadosGlobais.inimigoParaGerar;
-        GameObject monstroCriado = null;
-
-        if (inimigo == "Topeira")
+        //Verifica qual é a lista de inimigos
+        List<GameObject> grupoPrefabs = DadosGlobais.prefabsInimigos;
+        
+        foreach(GameObject inimigo in grupoPrefabs)
         {
-            monstroCriado = Instantiate(prefabInimigo1, posicaoInimigo.position, Quaternion.identity);
-        }
-        else if (inimigo == "TopeiraEvil")
-        {
-            monstroCriado = Instantiate(prefabInimigo2, posicaoInimigo.position, Quaternion.identity);
-        }
-
-        //2. Desativar a movimentação do inimigo
-        if(monstroCriado != null)
-        {
-            monstroCriado.GetComponent<ControladorInimigo>().enabled = false;
-        }
+            Instantiate(inimigo, posicaoInimigo.position, Quaternion.identity);
+        }       
     }
 }

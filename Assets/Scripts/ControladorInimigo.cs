@@ -37,7 +37,8 @@ public class ControladorInimigo : MonoBehaviour
     private bool estaSeMovendo = false;
 
     [Header("Identidade")]
-    public string nomeId;
+    //Agora precisamos saber o tipo de prefab do inimigo ao inves do seu nome/id
+    public GameObject prefabInimigo;
 
     private void Start()
     {
@@ -133,8 +134,9 @@ public class ControladorInimigo : MonoBehaviour
     private void IniciarCombate()
     {
         Debug.Log("Inicio do combate!");
-        
-        DadosGlobais.inimigoParaGerar = nomeId;
+
+        //Adiciona o inimigo a cena da arena
+        DadosGlobais.prefabsInimigos.Add(prefabInimigo);
 
         SceneManager.LoadScene("Arena");
     }
