@@ -257,6 +257,123 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4789116520975005503, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
   m_PrefabInstance: {fileID: 623848726924034767}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &237386386
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789116520975005503, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789116520975005503, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866852295125891275, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866852295125891275, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970207252589597843, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_Name
+      value: TopeiraPatrulha (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150771142340126320, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: nomeId
+      value: Topeira
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150771142340126320, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: idUnico
+      value: topeira_003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150771142340126320, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: prefabInimigo
+      value: 
+      objectReference: {fileID: 7349524736379277475, guid: df55c5ef32c56bb4cb15418e74ca4ac0, type: 3}
+    - target: {fileID: 7150771142340126320, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: pontosDePatrulha.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150771142340126320, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: 'pontosDePatrulha.Array.data[0]'
+      value: 
+      objectReference: {fileID: 237386388}
+    - target: {fileID: 7150771142340126320, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: 'pontosDePatrulha.Array.data[1]'
+      value: 
+      objectReference: {fileID: 237386387}
+    - target: {fileID: 7150771142340126320, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: 'pontosDePatrulha.Array.data[2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150771142340126320, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: 'pontosDePatrulha.Array.data[3]'
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 2203406206856511716, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+    - {fileID: 5888344069548064485, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+--- !u!4 &237386387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4789116520975005503, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+  m_PrefabInstance: {fileID: 237386386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &237386388 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4866852295125891275, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+  m_PrefabInstance: {fileID: 237386386}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &295447043
 GameObject:
   m_ObjectHideFlags: 0
@@ -11847,6 +11964,10 @@ PrefabInstance:
       value: Topeira
       objectReference: {fileID: 0}
     - target: {fileID: 7150771142340126320, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: idUnico
+      value: topeira_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150771142340126320, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
       propertyPath: prefabInimigo
       value: 
       objectReference: {fileID: 7349524736379277475, guid: df55c5ef32c56bb4cb15418e74ca4ac0, type: 3}
@@ -11883,6 +12004,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2522216965534684140, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
+      propertyPath: idUnico
+      value: topeira_001
+      objectReference: {fileID: 0}
     - target: {fileID: 6653769878462537540, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.82
@@ -12148,4 +12273,5 @@ SceneRoots:
   - {fileID: 1090307501289028961}
   - {fileID: 520601340}
   - {fileID: 623848726924034767}
+  - {fileID: 237386386}
   - {fileID: 1048730460292224033}

@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class ControladorInimigo : MonoBehaviour
 {
@@ -37,11 +37,18 @@ public class ControladorInimigo : MonoBehaviour
     private bool estaSeMovendo = false;
 
     [Header("Identidade")]
-    //Agora precisamos saber o tipo de prefab do inimigo ao inves do seu nome/id
+    //Agora precisamos saber o tipo de prefab do inimigo e o seu id
+    public string idUnico;
     public GameObject prefabInimigo;
 
     private void Start()
     {
+        if (DadosGlobais.inimigosDerrotados.Contains(idUnico))
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -133,12 +140,19 @@ public class ControladorInimigo : MonoBehaviour
 
     private void IniciarCombate()
     {
-        Debug.Log("Inicio do combate!");
+        //Busca o IniciadorBatalha no objeto pai (container)
+        IniciadorBatalha iniciador = GetComponentInParent<IniciadorBatalha>();
 
-        //Adiciona o inimigo a cena da arena
-        DadosGlobais.prefabsInimigos.Add(prefabInimigo);
+        //Empacotando o inimigo em uma lista
+        List<GameObject> lista = new List<GameObject>();
+        lista.Add(prefabInimigo);
 
-        SceneManager.LoadScene("Arena");
+        if (iniciador != null) 
+        {
+            iniciador.DispararBatalha(jogador.gameObject,
+                                      idUnico,
+                                      lista);
+        }
     }
 
     private void Perseguir()

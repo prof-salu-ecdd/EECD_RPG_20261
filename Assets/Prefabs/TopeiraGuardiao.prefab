@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6653769878462537540}
   - component: {fileID: 2283574253536019179}
   - component: {fileID: 2522216965534684140}
+  - component: {fileID: 3658296889484050327}
   m_Layer: 0
   m_Name: TopeiraGuardiao
   m_TagString: Untagged
@@ -88,6 +89,18 @@ MonoBehaviour:
   - {fileID: 7349524736379277475, guid: df55c5ef32c56bb4cb15418e74ca4ac0, type: 3}
   - {fileID: 7349524736379277475, guid: df55c5ef32c56bb4cb15418e74ca4ac0, type: 3}
   - {fileID: 7349524736379277475, guid: df55c5ef32c56bb4cb15418e74ca4ac0, type: 3}
+--- !u!114 &3658296889484050327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8150697311371885192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab560e2da308c834e8816f8b12b6e3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IniciadorBatalha
 --- !u!1001 &1432622597581980237
 PrefabInstance:
   m_ObjectHideFlags: 0

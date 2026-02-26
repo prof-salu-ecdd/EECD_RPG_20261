@@ -13,6 +13,11 @@ public class MovimentacaoExploracao : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
         anim = rb.GetComponent<Animator>();
+
+        if (DadosGlobais.posicaoRetornoJogador != Vector2.zero)
+        {
+            transform.position = DadosGlobais.posicaoRetornoJogador;
+        }
     }
 
     void Update()

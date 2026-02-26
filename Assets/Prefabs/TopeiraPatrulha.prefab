@@ -133,6 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1489166411852286422}
+  - component: {fileID: 5384312262643164322}
   m_Layer: 0
   m_Name: TopeiraPatrulha
   m_TagString: Untagged
@@ -157,6 +158,18 @@ Transform:
   - {fileID: 124411920531291487}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5384312262643164322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970207252589597843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab560e2da308c834e8816f8b12b6e3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IniciadorBatalha
 --- !u!1 &7289851991213132656
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,4 +296,4 @@ MonoBehaviour:
   raioVisao: 5
   raioPerseguicao: 8
   distanciaAtaque: 1
-  nomeId: 
+  prefabInimigo: {fileID: 0}
