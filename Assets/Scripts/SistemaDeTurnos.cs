@@ -1,7 +1,8 @@
-using System;
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum EstadoBatalha
 {
@@ -12,8 +13,11 @@ public class SistemaDeTurnos : MonoBehaviour
 {
     public EstadoBatalha estadoAtual;
 
-    AtributosCombate atributosHeroi;
-    AtributosCombate atributosInimigo;//Por enquanto apenas 1 inimigo
+    public Slider sliderHeroi;
+
+    private AtributosCombate atributosHeroi;
+    
+    private List<AtributosCombate> inimigosVivos = new List<AtributosCombate>();
 
     private void Start()
     {
@@ -23,57 +27,81 @@ public class SistemaDeTurnos : MonoBehaviour
     }
 
     IEnumerator ConfigurarBatalha()
-    {
-        Debug.Log("Preparando a batalha...");
+    {        
 
-        yield return new WaitForSeconds(1f);
-
-        //Encontra os personagens dentro da arena utilizando as tags
+        //1. Configurando o heroi
         atributosHeroi = GameObject.FindGameObjectWithTag("Player").
                                                 GetComponent<AtributosCombate>();
-        atributosInimigo = GameObject.FindGameObjectWithTag("Inimigo").
-                                                GetComponent<AtributosCombate>();
+        atributosHeroi.minhaBarraDeVida = sliderHeroi;
+        atributosHeroi.AtualizarBarra();
 
-        estadoAtual = EstadoBatalha.TurnoJogador;
+        Debug.Log("Preparando a batalha...");
+        yield return new WaitForSeconds(1f);
 
+        //2. Configurando os inimigos
+        //Preenche a lista de inimigos
+        GameObject[] objsInimigos = GameObject.FindGameObjectsWithTag("Inimigo");
+        foreach (GameObject obj in objsInimigos)
+        {
+            inimigosVivos.Add(obj.GetComponent<AtributosCombate>());
+        }
+        
         IniciarTurnoJogador();
     }
 
     private void IniciarTurnoJogador()
     {
         Debug.Log("Sua vez herói. Pressione ESPAÇO para ATACAR!");
+        estadoAtual = EstadoBatalha.TurnoJogador;
     }
 
-    private void Update()
+    public void BotaoAtacar()
     {
-        switch (estadoAtual)
+        //ignora caso não seja a vez do jogador
+        if(estadoAtual != EstadoBatalha.TurnoJogador)
         {
-            case EstadoBatalha.TurnoJogador:
-                //Ataque basico (ESPAÇO)
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    Debug.Log("Herói atacou o inimigo.");
-                    atributosInimigo.ReceberDano(atributosHeroi.danoBase);
-
-                    VerificaFimDeTurnoJogador();
-                }
-                break;
+            return;
         }
+
+        //Define o alvo do ataque. Sempre o primeiro elemento da lista
+        AtributosCombate alvo = inimigosVivos[0];
+        alvo.ReceberDano(atributosHeroi.danoBase);
+
+        //Se a vida do inimigo chegou a zero, removemos ele de lista
+        if(alvo.hpAtual <= 0)
+        {
+            inimigosVivos.RemoveAt(0);
+        }
+
+        VerificaFimDeTurnoJogador();
+    }
+
+    public void BotaoPocao()
+    {
+        //ignora caso não seja a vez do jogador
+        if (estadoAtual != EstadoBatalha.TurnoJogador)
+        {
+            return;
+        }
+
+        //Chama a função de cura
+        atributosHeroi.ReceberCura(30);
+
+        VerificaFimDeTurnoJogador();
     }
 
     void VerificaFimDeTurnoJogador()
     {
-        //Verifica se o combate se encerrou
-        if (atributosInimigo.hpAtual <= 0)
+        //Se a fila de inimigos ficou VAZIA
+        if(inimigosVivos.Count == 0)
         {
             estadoAtual = EstadoBatalha.Vitoria;
-            //Finalizar a batalha(vitoria do jogador)
             StartCoroutine(FinalizarBatalha(true));
         }
         else
         {
+            //Ainda há inimigos vivos
             estadoAtual = EstadoBatalha.TurnoInimigo;
-            //Iniciar turno do inimigo
             StartCoroutine(TurnoDoInimigo());
         }
     }
@@ -81,10 +109,20 @@ public class SistemaDeTurnos : MonoBehaviour
     IEnumerator TurnoDoInimigo()
     {
         Debug.Log("Inimigo pensando ...");
-        yield return new WaitForSeconds(2f);
-        //Ataca Jogador
+        //Inimigos Atacam o Jogador
         Debug.Log("Inimigo ataca o jogador");
-        atributosHeroi.ReceberDano(atributosInimigo.danoBase);
+        
+        foreach(AtributosCombate inimigo in inimigosVivos)
+        {
+            yield return new WaitForSeconds(1f);
+            atributosHeroi.ReceberDano(inimigo.danoBase);
+
+            //Verifica se o heroi morreu, para o ataque do proximo inimigo
+            if(atributosHeroi.hpAtual <= 0)
+            {
+                break;
+            }
+        }
 
         //Verifica se o combate encerrou
         if (atributosHeroi.hpAtual <= 0)
@@ -95,13 +133,13 @@ public class SistemaDeTurnos : MonoBehaviour
         }
         else
         {
-            estadoAtual = EstadoBatalha.TurnoJogador;
             IniciarTurnoJogador();
         }
     }
 
     IEnumerator FinalizarBatalha(bool jogadorVenceu)
     {
+        DadosGlobais.hpAtualJogador = atributosHeroi.hpAtual;
         yield return new WaitForSeconds(2f);
         if (jogadorVenceu)
         {

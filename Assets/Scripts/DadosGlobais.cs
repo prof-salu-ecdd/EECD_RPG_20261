@@ -8,4 +8,7 @@ public static class DadosGlobais
     public static string idInimigoEmCombate;
     public static List<string> inimigosDerrotados = new List<string>();
     public static Vector2 posicaoRetornoJogador = Vector2.zero;
+
+    //Dados salvos do player
+    public static int hpAtualJogador = -1;
 }

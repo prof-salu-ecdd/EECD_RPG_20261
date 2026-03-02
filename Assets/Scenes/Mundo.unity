@@ -265,6 +265,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 818171078083823325, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818171078083823325, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.31
@@ -11915,6 +11923,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 818171078083823325, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818171078083823325, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1489166411852286422, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -12004,9 +12020,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1366478797593693455, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1366478797593693455, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2522216965534684140, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
       propertyPath: idUnico
       value: topeira_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270167383850609097, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270167383850609097, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6653769878462537540, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12051,6 +12083,14 @@ PrefabInstance:
     - target: {fileID: 8150697311371885192, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
       propertyPath: m_Name
       value: TopeiraGuardiao
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889427882218151068, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889427882218151068, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
