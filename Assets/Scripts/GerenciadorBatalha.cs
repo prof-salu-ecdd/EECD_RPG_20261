@@ -15,23 +15,39 @@ public class GerenciadorBatalha : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Posiciona o jogador
+        //1. Inicializa o jogador o jogador
         GameObject jogador = Instantiate(prefabJogador, posicaoJogador.position, Quaternion.identity);
 
-        //1. Desativar a movimentação do jogador
+        AtributosCombate atributosJogador =  jogador.GetComponent<AtributosCombate>();
+        atributosJogador.nivel = DadosGlobais.nivelAtualJogador;
+        atributosJogador.CalcularStatus();
+
+        //Desliga a movimentação do player
         if(jogador.GetComponent<MovimentacaoExploracao>() != null)
         {
             jogador.GetComponent<MovimentacaoExploracao>().enabled = false;
         }
 
-        //Verifica qual é a lista de inimigos
+        //2. Inicializa os inimigos
         List<GameObject> grupoPrefabs = DadosGlobais.prefabsInimigos;
 
         for (int i = 0; i < grupoPrefabs.Count; i++)
         {
-            Instantiate(grupoPrefabs[i], 
-                        posicaoInimigos[i].transform.position, 
-                        Quaternion.identity);
-        }       
+            GameObject inimigo = Instantiate(grupoPrefabs[i], 
+                                            posicaoInimigos[i].transform.position, 
+                                            Quaternion.identity);
+
+            //Pega os dados da memoria global e atribui aos inimigos
+            AtributosCombate atributos = inimigo.GetComponent<AtributosCombate>();
+
+            if(i < DadosGlobais.niveisInimigosArena.Count)
+            {
+                atributos.nivel = DadosGlobais.niveisInimigosArena[i];
+                atributos.CalcularStatus();
+                atributos.hpAtual = atributos.hpMaximo;
+            }
+        }
+        
+         
     }
 }

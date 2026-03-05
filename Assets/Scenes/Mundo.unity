@@ -365,6 +365,10 @@ PrefabInstance:
       propertyPath: 'pontosDePatrulha.Array.data[3]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7246356729941451109, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
+      propertyPath: nivel
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2203406206856511716, guid: fc8011f6894e4a54eaf2e8b26f085d9a, type: 3}
@@ -11862,6 +11866,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 687901330480406510, guid: afac71e36b4bc6c4aba284389273a056, type: 3}
+      propertyPath: nivel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3611428944001559555, guid: afac71e36b4bc6c4aba284389273a056, type: 3}
       propertyPath: m_Name
       value: Player
@@ -12027,6 +12035,10 @@ PrefabInstance:
     - target: {fileID: 1366478797593693455, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483679618838068004, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
+      propertyPath: nivel
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2522216965534684140, guid: 554065aa2bd5e644ab014ba1d1e3fee4, type: 3}
       propertyPath: idUnico

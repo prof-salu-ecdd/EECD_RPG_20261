@@ -28,12 +28,21 @@ public class GatilhoGuardiao : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             IniciadorBatalha iniciador = GetComponent<IniciadorBatalha>();
+            
+            //Extrator de niveis dos inimigos
+            List<int> niveisExtraidos = new List<int>();
+            AtributosCombate[] inimigosCena = GetComponentsInChildren<AtributosCombate>();
+
+            foreach (AtributosCombate inimigo in inimigosCena) 
+            {
+                niveisExtraidos.Add(inimigo.nivel);
+            } 
 
             if (iniciador != null) 
             {
                 iniciador.DispararBatalha(collision.gameObject,
                                           idUnico,
-                                          inimigos);
+                                          inimigos, niveisExtraidos);
             }
         }
     }
