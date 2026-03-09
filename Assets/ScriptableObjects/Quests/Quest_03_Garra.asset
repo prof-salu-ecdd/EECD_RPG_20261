@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d125b462a32d8d4a9f1e551c5089010, type: 3}
+  m_Name: Quest_03_Garra
+  m_EditorClassIdentifier: Assembly-CSharp::Quest
+  nomeQuest: Garras de topeira
+  tipoDeMissao: 2
+  nomeNPCEmissor: Cacador
+  nomeNPCDestino: Cacador
+  falaInicio: "Agora a parte dif\xEDcil. Precisamos de 1 Garra de Toupeira gigante
+    para o feiti\xE7o!"
+  falaAndamento: "As toupeiras s\xE3o perigosas. Volte quando conseguir a garra."
+  falaConclusao: "Incr\xEDvel! Com esta garra a po\xE7\xE3o est\xE1 pronta. Pegue
+    a sua recompensa."
+  descricaoNoHUD: Coletar 1x Garra de Topeira
+  quantidade: 1
+  nomeObjetivo: Garras de Topeira
+  recompensaOuro: 10
+  recompensaXP: 50
+  proximaQuest: {fileID: 11400000, guid: d23c9da9080a62943b6e7684a7b794ef, type: 2}

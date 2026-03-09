@@ -9,10 +9,17 @@ public static class DadosGlobais
     public static List<string> inimigosDerrotados = new List<string>();
     public static List<int>niveisInimigosArena = new List<int>();//Armazena o lvls dos inimigos
 
-    //Dados salvos do player
+    // Dados salvos do player
     public static Vector2 posicaoRetornoJogador = Vector2.zero;
     public static int hpAtualJogador = -1;
     public static int nivelAtualJogador = 1;
     public static int xpAtualJogador = 0;
     public static int moedasAtualJogador = 0;
+    public static int pocoesAtualJogador = 0;
+
+    // Sistema de missões
+    public static Quest questDisponivel;
+    public static Quest QuestAtiva;
+    public static int progressoAtual = 0;
+    public static bool historiaConcluida = false;
 }

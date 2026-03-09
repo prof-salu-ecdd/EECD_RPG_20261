@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d125b462a32d8d4a9f1e551c5089010, type: 3}
+  m_Name: Quest_04_Entregar
+  m_EditorClassIdentifier: Assembly-CSharp::Quest
+  nomeQuest: "Po\xE7\xE3o Milagrosa"
+  tipoDeMissao: 0
+  nomeNPCEmissor: Cacador
+  nomeNPCDestino: Aldeao
+  falaInicio: "Leve esta po\xE7\xE3o com seguran\xE7a para o Alde\xE3o."
+  falaAndamento: 
+  falaConclusao: "Gra\xE7as a Deus voc\xEA voltou! A nossa vila est\xE1 a salvo."
+  descricaoNoHUD: "Retorne ao alde\xE3o"
+  quantidade: 0
+  nomeObjetivo: 0
+  recompensaOuro: 50
+  recompensaXP: 150
+  proximaQuest: {fileID: 0}

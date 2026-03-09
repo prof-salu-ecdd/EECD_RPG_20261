@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d125b462a32d8d4a9f1e551c5089010, type: 3}
+  m_Name: Quest_02_Plantas
+  m_EditorClassIdentifier: Assembly-CSharp::Quest
+  nomeQuest: Coletando as plantas de cura
+  tipoDeMissao: 2
+  nomeNPCEmissor: Cacador
+  nomeNPCDestino: Cacador
+  falaInicio: "Primeiro, enfrente aquelas \xE1rvores vivas e me traga 2 Plantas Curativas!"
+  falaAndamento: "Ainda n\xE3o tem todas as plantas?"
+  falaConclusao: "Perfeito! As plantas est\xE3o frescas."
+  descricaoNoHUD: Coletar 2x Plantas Curativas
+  quantidade: 2
+  nomeObjetivo: Plantas curativas
+  recompensaOuro: 10
+  recompensaXP: 50
+  proximaQuest: {fileID: 11400000, guid: 6a6283e087785da4d867aa5d50ac37b7, type: 2}
