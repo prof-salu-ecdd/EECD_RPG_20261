@@ -16,6 +16,9 @@ public static class DadosGlobais
     public static int xpAtualJogador = 0;
     public static int moedasAtualJogador = 0;
     public static int pocoesAtualJogador = 0;
+    
+    //Dados do inventário
+    public static List<SlotInventario> inventarioAtualJogador = new List<SlotInventario>();
 
     // Sistema de missões
     public static Quest questDisponivel;

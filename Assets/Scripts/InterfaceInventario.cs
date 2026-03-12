@@ -20,6 +20,16 @@ public class InterfaceInventario : MonoBehaviour
         AtualizarInterface();
     }
 
+    private void Update()
+    {
+        //O invetario agora lerá os dados da MemoriaGlobal
+        if (textoMoedas != null) 
+        {
+            textoMoedas.text = $"Ouro: {DadosGlobais.moedasAtualJogador.ToString()}";
+
+        }
+    }
+
     public void AtualizarInterface()
     {
         //1. Atualiza as Moedas

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class NPCQuest : MonoBehaviour
@@ -7,6 +8,10 @@ public class NPCQuest : MonoBehaviour
 
     [Header("Apenas para o primeiro NPC do Jogo")]
     public Quest questInicial;
+
+    [Header("Interface de dialogo")]
+    public GameObject painelDialogo;
+    public TextMeshProUGUI textoDiaologo;
 
     [Header("Visuais")]
     public SpriteRenderer indicadorVisual;//AZUL [inicio] | LARANJA [destino]
@@ -56,9 +61,20 @@ public class NPCQuest : MonoBehaviour
 
     public void Interagir() 
     {
+        //Liga a caixa de dialogo (painel)
+        if(painelDialogo != null)
+        {
+            painelDialogo.SetActive(true);
+        }
+
+        if(textoDiaologo == null)
+        {
+            return;
+        }
+
         if (DadosGlobais.historiaConcluida)
         {
-            Debug.Log($"{nome} diz: A paz reina na nossa floresta graças a você!");
+            textoDiaologo.text = ($"{nome} diz: A paz reina na nossa floresta graças a você!");
             return;
         }
 
@@ -80,14 +96,14 @@ public class NPCQuest : MonoBehaviour
 
                 if( terminouCaca || terminouColeta || terminouEntrega)
                 {
-                    Debug.Log($"{nome} diz: {quest.falaConclusao} " +
+                    textoDiaologo.text = ($"{nome} diz: {quest.falaConclusao} " +
                         $"(Recebeu {quest.recompensaOuro}) Ouro");
                     //Entregar recompensa
                     EntregarRecompensa(quest);
                 }
                 else
                 {
-                    Debug.Log($"{nome} diz: {quest.falaAndamento} Progresso: " +
+                    textoDiaologo.text = ($"{nome} diz: {quest.falaAndamento} Progresso: " +
                         $"{DadosGlobais.progressoAtual} / {quest.quantidade} " +
                         $"{quest.nomeObjetivo}");
                 }
@@ -95,7 +111,7 @@ public class NPCQuest : MonoBehaviour
             }
             else
             {
-                Debug.Log($"{nome} diz: O {quest.nomeNPCDestino} está a sua espera." +
+                textoDiaologo.text = ($"{nome} diz: O {quest.nomeNPCDestino} está a sua espera." +
                         $"Não perca tempo aqui!");
             }
             return;
@@ -106,7 +122,7 @@ public class NPCQuest : MonoBehaviour
         {
             if(DadosGlobais.questDisponivel.nomeNPCEmissor == nome)
             {
-                Debug.Log($"{nome} diz: {DadosGlobais.questDisponivel.falaInicio}");
+                textoDiaologo.text = ($"{nome} diz: {DadosGlobais.questDisponivel.falaInicio}");
                 DadosGlobais.QuestAtiva = DadosGlobais.questDisponivel;
                 DadosGlobais.questDisponivel = null;
                 DadosGlobais.progressoAtual = 0;
@@ -114,14 +130,14 @@ public class NPCQuest : MonoBehaviour
             else
             {
 
-                Debug.Log($"{nome} diz: Ouvi dizer que o " +
+                textoDiaologo.text = ($"{nome} diz: Ouvi dizer que o " +
                     $"{DadosGlobais.questDisponivel.nomeNPCEmissor} esta a sua procura.");
             }
             return;
         }
 
         //Cenario 3: NPC sem quest
-        Debug.Log($"{nome} diz: Olá aventureiro! O dia está lindo hoje, não acha?");
+        textoDiaologo.text = ($"{nome} diz: Olá aventureiro! O dia está lindo hoje, não acha?");
 
     }
 
@@ -156,6 +172,12 @@ public class NPCQuest : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             jogadorPerto = false;
+
+            if(painelDialogo != null)
+            {
+                //Fecha a caixa de dialogo (painel)
+                painelDialogo.SetActive(false);
+            }            
         }
     }
 }

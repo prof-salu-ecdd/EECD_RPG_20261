@@ -19,22 +19,31 @@ public class SistemaDeTurnos : MonoBehaviour
     
     private List<AtributosCombate> inimigosVivos = new List<AtributosCombate>();
 
+    [Header("Integração com o inventário")]
+    public DadosItem pocaoDevida;
+    public Button btnPocao;
+
     private void Start()
     {
         estadoAtual = EstadoBatalha.Preparacao;
 
-        StartCoroutine(ConfigurarBatalha());
+        StartCoroutine(ConfigurarBatalha());        
     }
 
     IEnumerator ConfigurarBatalha()
     {        
-
         //1. Configurando o heroi
         atributosHeroi = GameObject.FindGameObjectWithTag("Player").
                                                 GetComponent<AtributosCombate>();
         atributosHeroi.minhaBarraDeVida = sliderHeroi;
         atributosHeroi.AtualizarBarra();
 
+        //Verifica se tem poções no inventario
+        if(!GetComponent<SistemaInventario>().TemItem(pocaoDevida, 1))
+        {
+            btnPocao.interactable = false;
+        }
+            
         Debug.Log("Preparando a batalha...");
         yield return new WaitForSeconds(1f);
 
@@ -51,7 +60,7 @@ public class SistemaDeTurnos : MonoBehaviour
 
     private void IniciarTurnoJogador()
     {
-        Debug.Log("Sua vez herói. Pressione ESPAÇO para ATACAR!");
+        Debug.Log("Sua vez herói. Escolha uma ação.");
         estadoAtual = EstadoBatalha.TurnoJogador;
     }
 
@@ -65,7 +74,7 @@ public class SistemaDeTurnos : MonoBehaviour
 
         //Define o alvo do ataque. Sempre o primeiro elemento da lista
         AtributosCombate alvo = inimigosVivos[0];
-        alvo.ReceberDano(atributosHeroi.danoBase);
+        alvo.ReceberDano(atributosHeroi.danoAtual);
 
         //Se a vida do inimigo chegou a zero, removemos ele de lista
         if(alvo.hpAtual <= 0)
@@ -113,10 +122,38 @@ public class SistemaDeTurnos : MonoBehaviour
             return;
         }
 
-        //Chama a função de cura
-        atributosHeroi.ReceberCura(30);
+        bool consumiuApenasUma = false;
 
-        VerificaFimDeTurnoJogador();
+        //1. Procura o item(poção) no inventário global
+        foreach(SlotInventario slot in DadosGlobais.inventarioAtualJogador)
+        {
+            //Se tenho a poção no inventario e quantidade superior a ZERO
+            if(slot.dadosDoItem == pocaoDevida && slot.quantidade > 0)
+            {
+                slot.quantidade--;
+                consumiuApenasUma = true;
+
+                //Remove da lista se a quantidade for zero
+                if(slot.quantidade <= 0)
+                {
+                    DadosGlobais.inventarioAtualJogador.Remove(slot);
+                    //Desabilita Botao
+                    btnPocao.interactable = false;
+                }
+                break;
+            }
+        }
+
+        if (consumiuApenasUma)
+        {
+            atributosHeroi.ReceberCura(50);
+            Debug.LogWarning("Você bebeu a poção. Restarou 50 pontos de vida.");
+            VerificaFimDeTurnoJogador();
+        }
+        else
+        {
+            Debug.LogWarning("Você não tem poções de vida!");
+        }
     }
 
     void VerificaFimDeTurnoJogador()
@@ -174,6 +211,7 @@ public class SistemaDeTurnos : MonoBehaviour
         DadosGlobais.hpAtualJogador = atributosHeroi.hpAtual;
         DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
         DadosGlobais.xpAtualJogador = progresso.xpAtual;
+        
 
         yield return new WaitForSeconds(2f);
         if (jogadorVenceu)

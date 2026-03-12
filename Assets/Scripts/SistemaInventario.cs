@@ -12,6 +12,23 @@ public class SistemaInventario : MonoBehaviour
     //Evento que indica alteração no inventário
     public event Action onInventarioMudou;
 
+    private void Awake()
+    {
+        //Se a memoria global estiver vazio (começo do jogo), salva os itens no inspector
+
+        if(DadosGlobais.inventarioAtualJogador.Count == 0 && inventario.Count > 0)
+        {
+            DadosGlobais.inventarioAtualJogador = new List<SlotInventario>(inventario);
+            moedas = DadosGlobais.moedasAtualJogador;
+        }
+
+
+        inventario = DadosGlobais.inventarioAtualJogador;
+
+        //Sempre que voltar ao mundo de exploração, captura o valor armazenado nos DadosGlobais
+        moedas = DadosGlobais.moedasAtualJogador;        
+    }
+
     public void AdicionarItem(DadosItem itemParaAdicionar, int quantidade)
     {
         //1. Verificar se o item é empilhavel
@@ -100,6 +117,9 @@ public class SistemaInventario : MonoBehaviour
         {
             onInventarioMudou.Invoke();
         }
+
+        //Atualiza as moedas em DadosGlobais
+        DadosGlobais.moedasAtualJogador = moedas;
     }
 
     public bool TemItem(DadosItem item, int qtd)

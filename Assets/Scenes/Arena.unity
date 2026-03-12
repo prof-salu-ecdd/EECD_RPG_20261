@@ -5667,6 +5667,7 @@ GameObject:
   - component: {fileID: 1173460756}
   - component: {fileID: 1173460757}
   - component: {fileID: 1173460758}
+  - component: {fileID: 1173460759}
   m_Layer: 0
   m_Name: GerenciadorBatalha
   m_TagString: Untagged
@@ -5721,6 +5722,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeTurnos
   estadoAtual: 0
   sliderHeroi: {fileID: 1911486241}
+  pocaoDevida: {fileID: 11400000, guid: 429c578530f4a9044ad0af2628215113, type: 2}
+  btnPocao: {fileID: 264905618}
+--- !u!114 &1173460759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173460755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2652d9df9364b4ea3177b837ca322b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SistemaInventario
+  inventario: []
+  moedas: 0
 --- !u!1 &1173505063
 GameObject:
   m_ObjectHideFlags: 0
