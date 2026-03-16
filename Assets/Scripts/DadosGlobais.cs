@@ -25,4 +25,8 @@ public static class DadosGlobais
     public static Quest QuestAtiva;
     public static int progressoAtual = 0;
     public static bool historiaConcluida = false;
+
+    //Bonus comprados na loja
+    public static int bonusAtaque = 0;
+    public static int bonusDefesa = 0;
 }

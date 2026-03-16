@@ -31,15 +31,23 @@ public class SistemaDeTurnos : MonoBehaviour
     }
 
     IEnumerator ConfigurarBatalha()
-    {        
+    {
+        //DELAY [sobreescrevendo o valor]
+        yield return new WaitForSeconds(1f);
         //1. Configurando o heroi
         atributosHeroi = GameObject.FindGameObjectWithTag("Player").
                                                 GetComponent<AtributosCombate>();
         atributosHeroi.minhaBarraDeVida = sliderHeroi;
+
+        atributosHeroi.hpMaximo += DadosGlobais.bonusDefesa;
+        atributosHeroi.hpAtual = atributosHeroi.hpMaximo;
+
         atributosHeroi.AtualizarBarra();
 
+        atributosHeroi.danoAtual += DadosGlobais.bonusAtaque;
+
         //Verifica se tem poções no inventario
-        if(!GetComponent<SistemaInventario>().TemItem(pocaoDevida, 1))
+        if (!GetComponent<SistemaInventario>().TemItem(pocaoDevida, 1))
         {
             btnPocao.interactable = false;
         }

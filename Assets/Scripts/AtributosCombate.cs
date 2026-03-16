@@ -12,7 +12,7 @@ public class AtributosCombate : MonoBehaviour
     public int hpBase = 100;
     public int danoBase = 10;
 
-    [Header("Status calculados'")]
+    [Header("Status calculados")]
     public int hpMaximo;
     public int hpAtual;
     public int danoAtual;
@@ -33,7 +33,7 @@ public class AtributosCombate : MonoBehaviour
             hpAtual = hpMaximo;
         }
 
-            AtualizarBarra();
+        AtualizarBarra();
     }
 
     public void CalcularStatus()
