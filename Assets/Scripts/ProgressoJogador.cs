@@ -13,15 +13,7 @@ public class ProgressoJogador : MonoBehaviour
     {
         atributos = GetComponent<AtributosCombate>();
 
-        //Se tem dados armazenado na memoria global, utilize
-        if(DadosGlobais.nivelAtualJogador > 1 || DadosGlobais.xpAtualJogador > 0)
-        {
-            atributos.nivel = DadosGlobais.nivelAtualJogador;
-            xpAtual = DadosGlobais.xpAtualJogador;
-
-            //Força o recalculo do HP e Dano 
-            atributos.CalcularStatus();
-        }
+        IniciadorBatalha.CarregarDadosJogador(gameObject);
     }
 
     public void GanharXP(int quantidade)

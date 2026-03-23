@@ -16,5 +16,5 @@ MonoBehaviour:
   id: item_flecha_simples
   icone: {fileID: 21300000, guid: 13c68d5f76e1d0647ae5c8578c0a8fd5, type: 3}
   descricao: Flecha simples de madeira
-  valorEmOuro: 1
+  valorEmOuro: 3
   ehEmpilhavel: 1

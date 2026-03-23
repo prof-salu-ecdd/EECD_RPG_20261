@@ -17,30 +17,29 @@ public class AtributosCombate : MonoBehaviour
     public int hpAtual;
     public int danoAtual;
 
+    [Header("Bonus (UPGRADES)")]
+    public int bonusAtaque = 0;
+    public int bonusDefesa = 0;
+
     [Header("UI")]
     public Slider minhaBarraDeVida;
 
-    private void Start()
+    private void Awake()
     {
         CalcularStatus();
+        hpAtual = hpMaximo;
+    }
 
-        if (gameObject.CompareTag("Player") && DadosGlobais.hpAtualJogador != -1)
-        {
-            hpAtual = DadosGlobais.hpAtualJogador;
-        }
-        else
-        {
-            hpAtual = hpMaximo;
-        }
-
+    private void Start()
+    {
         AtualizarBarra();
     }
 
     public void CalcularStatus()
     {
-        //Ganha +20 de HP e +5 de dano por nivel
-        hpMaximo = hpBase + ((nivel - 1) * 20);
-        danoAtual = danoBase + ((nivel - 1) * 5);
+        //Ganha +20 de HP e +5 de dano por nivel + adicionando os bonus (UPGRADES)
+        hpMaximo = hpBase + ((nivel - 1) * 20) + bonusDefesa;
+        danoAtual = danoBase + ((nivel - 1) * 5) + bonusAtaque;
 
         if(hpAtual > hpMaximo)
         {

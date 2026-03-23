@@ -32,7 +32,7 @@ public class SistemaDeTurnos : MonoBehaviour
 
     IEnumerator ConfigurarBatalha()
     {
-        //DELAY [sobreescrevendo o valor]
+        //CORRIGIR [sobreescrevendo o valor]
         yield return new WaitForSeconds(1f);
         //1. Configurando o heroi
         atributosHeroi = GameObject.FindGameObjectWithTag("Player").
