@@ -11,7 +11,7 @@ public static class DadosGlobais
 
     // Dados salvos do player
     public static Vector2 posicaoRetornoJogador = Vector2.zero;
-    public static int hpAtualJogador = -1;
+    public static int hpAtualJogador = 100;
     public static int nivelAtualJogador = 1;
     public static int xpAtualJogador = 0;
     public static int moedasAtualJogador = 0;

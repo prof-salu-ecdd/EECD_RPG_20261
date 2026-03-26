@@ -26,6 +26,7 @@ public class ItemColetavel : MonoBehaviour
 
             if (inventario != null)
             {
+                GerenciadorDeAudio.instance.SomColeta();
                 inventario.AdicionarItem(item, quantidade);
                 Destroy(gameObject);
             }

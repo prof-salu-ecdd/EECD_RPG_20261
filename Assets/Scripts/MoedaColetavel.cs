@@ -18,6 +18,7 @@ public class MoedaColetavel : MonoBehaviour
 
             if (inventario != null)
             {
+                GerenciadorDeAudio.instance.SomColeta();
                 inventario.ModificadorMoedas(valor);
                 Destroy(gameObject);
             }

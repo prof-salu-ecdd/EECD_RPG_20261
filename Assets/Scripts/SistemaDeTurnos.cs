@@ -190,7 +190,7 @@ public class SistemaDeTurnos : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             atributosHeroi.ReceberDano(inimigo.danoBase);
-
+            EfeitoCamera.instance.TremerTela(.5f, .1f);
             //Verifica se o heroi morreu, para o ataque do proximo inimigo
             if(atributosHeroi.hpAtual <= 0)
             {
